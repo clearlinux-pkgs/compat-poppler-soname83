@@ -1,0 +1,7 @@
+# This file contains build requirements that get picked up but are
+# undesirable. One entry per line, no whitespace.
+Qt5Core
+Qt5Gui
+Qt5Test
+Qt5Widgets
+Qt5Xml

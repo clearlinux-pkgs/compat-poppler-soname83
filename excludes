@@ -1,0 +1,16 @@
+# This file contains the output files that need %exclude. Full path
+# names, one per line.
+/usr/lib64/haswell/libpoppler-cpp.so.0
+/usr/lib64/haswell/libpoppler-cpp.so.0.5.0
+/usr/lib64/haswell/libpoppler-glib.so.8
+/usr/lib64/haswell/libpoppler-glib.so.8.11.0
+/usr/lib64/libpoppler-cpp.so.0
+/usr/lib64/libpoppler-cpp.so.0.5.0
+/usr/lib64/libpoppler-glib.so.8
+/usr/lib64/libpoppler-glib.so.8.11.0
+/usr/lib64/haswell/libpoppler-qt5.so
+/usr/lib64/libpoppler-qt5.so
+/usr/lib64/haswell/libpoppler-qt5.so.1
+/usr/lib64/haswell/libpoppler-qt5.so.1.17.0
+/usr/lib64/libpoppler-qt5.so.1
+/usr/lib64/libpoppler-qt5.so.1.17.0

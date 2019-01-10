@@ -1,0 +1,8 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+libjpeg-turbo-dev
+#openjpeg-dev
+# for /usr/bin/qmake
+qtbase-extras
+buildreq-kde
+glibc-bin
