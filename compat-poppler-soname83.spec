@@ -4,20 +4,20 @@
 #
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
-Name     : poppler
+Name     : compat-poppler-soname83
 Version  : 0.72.0
-Release  : 4
+Release  : 5
 URL      : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz
 Source99 : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-3.0
-Requires: poppler-bin = %{version}-%{release}
-Requires: poppler-data = %{version}-%{release}
-Requires: poppler-lib = %{version}-%{release}
-Requires: poppler-license = %{version}-%{release}
-Requires: poppler-man = %{version}-%{release}
+Requires: compat-poppler-soname83-bin = %{version}-%{release}
+Requires: compat-poppler-soname83-data = %{version}-%{release}
+Requires: compat-poppler-soname83-lib = %{version}-%{release}
+Requires: compat-poppler-soname83-license = %{version}-%{release}
+Requires: compat-poppler-soname83-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : curl-dev
@@ -61,60 +61,60 @@ adopt poppler.  After all, we only need one application to use poppler
 to break even.
 
 %package bin
-Summary: bin components for the poppler package.
+Summary: bin components for the compat-poppler-soname83 package.
 Group: Binaries
-Requires: poppler-data = %{version}-%{release}
-Requires: poppler-license = %{version}-%{release}
-Requires: poppler-man = %{version}-%{release}
+Requires: compat-poppler-soname83-data = %{version}-%{release}
+Requires: compat-poppler-soname83-license = %{version}-%{release}
+Requires: compat-poppler-soname83-man = %{version}-%{release}
 
 %description bin
-bin components for the poppler package.
+bin components for the compat-poppler-soname83 package.
 
 
 %package data
-Summary: data components for the poppler package.
+Summary: data components for the compat-poppler-soname83 package.
 Group: Data
 
 %description data
-data components for the poppler package.
+data components for the compat-poppler-soname83 package.
 
 
 %package dev
-Summary: dev components for the poppler package.
+Summary: dev components for the compat-poppler-soname83 package.
 Group: Development
-Requires: poppler-lib = %{version}-%{release}
-Requires: poppler-bin = %{version}-%{release}
-Requires: poppler-data = %{version}-%{release}
-Provides: poppler-devel = %{version}-%{release}
+Requires: compat-poppler-soname83-lib = %{version}-%{release}
+Requires: compat-poppler-soname83-bin = %{version}-%{release}
+Requires: compat-poppler-soname83-data = %{version}-%{release}
+Provides: compat-poppler-soname83-devel = %{version}-%{release}
 
 %description dev
-dev components for the poppler package.
+dev components for the compat-poppler-soname83 package.
 
 
 %package lib
-Summary: lib components for the poppler package.
+Summary: lib components for the compat-poppler-soname83 package.
 Group: Libraries
-Requires: poppler-data = %{version}-%{release}
-Requires: poppler-license = %{version}-%{release}
+Requires: compat-poppler-soname83-data = %{version}-%{release}
+Requires: compat-poppler-soname83-license = %{version}-%{release}
 
 %description lib
-lib components for the poppler package.
+lib components for the compat-poppler-soname83 package.
 
 
 %package license
-Summary: license components for the poppler package.
+Summary: license components for the compat-poppler-soname83 package.
 Group: Default
 
 %description license
-license components for the poppler package.
+license components for the compat-poppler-soname83 package.
 
 
 %package man
-Summary: man components for the poppler package.
+Summary: man components for the compat-poppler-soname83 package.
 Group: Default
 
 %description man
-man components for the poppler package.
+man components for the compat-poppler-soname83 package.
 
 
 %prep
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547229827
+export SOURCE_DATE_EPOCH=1547230231
 mkdir -p clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -154,12 +154,12 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1547229827
+export SOURCE_DATE_EPOCH=1547230231
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/package-licenses/poppler
-cp COPYING %{buildroot}/usr/share/package-licenses/poppler/COPYING
-cp COPYING3 %{buildroot}/usr/share/package-licenses/poppler/COPYING3
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/poppler/cmake_modules_COPYING-CMAKE-SCRIPTS
+mkdir -p %{buildroot}/usr/share/package-licenses/compat-poppler-soname83
+cp COPYING %{buildroot}/usr/share/package-licenses/compat-poppler-soname83/COPYING
+cp COPYING3 %{buildroot}/usr/share/package-licenses/compat-poppler-soname83/COPYING3
+cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/compat-poppler-soname83/cmake_modules_COPYING-CMAKE-SCRIPTS
 pushd clr-build-avx2
 %make_install_avx2  || :
 popd
@@ -393,9 +393,9 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-%exclude /usr/share/package-licenses/poppler/COPYING
-%exclude /usr/share/package-licenses/poppler/COPYING3
-%exclude /usr/share/package-licenses/poppler/cmake_modules_COPYING-CMAKE-SCRIPTS
+%exclude /usr/share/package-licenses/compat-poppler-soname83/COPYING
+%exclude /usr/share/package-licenses/compat-poppler-soname83/COPYING3
+%exclude /usr/share/package-licenses/compat-poppler-soname83/cmake_modules_COPYING-CMAKE-SCRIPTS
 
 %files man
 %defattr(0644,root,root,0755)
