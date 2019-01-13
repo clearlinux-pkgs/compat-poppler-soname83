@@ -6,7 +6,7 @@
 #
 Name     : compat-poppler-soname83
 Version  : 0.72.0
-Release  : 5
+Release  : 6
 URL      : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz
 Source99 : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz.sig
@@ -131,7 +131,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547230231
+export SOURCE_DATE_EPOCH=1547396943
 mkdir -p clr-build
 pushd clr-build
 export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -139,7 +139,7 @@ export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-i
 export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake .. -DENABLE_XPDF_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 mkdir -p clr-build-avx2
 pushd clr-build-avx2
@@ -150,11 +150,11 @@ export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semanti
 export CFLAGS="$CFLAGS -march=haswell -m64"
 export CXXFLAGS="$CXXFLAGS -march=haswell -m64"
 %cmake .. -DENABLE_XPDF_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1547230231
+export SOURCE_DATE_EPOCH=1547396943
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/compat-poppler-soname83
 cp COPYING %{buildroot}/usr/share/package-licenses/compat-poppler-soname83/COPYING
@@ -166,6 +166,10 @@ popd
 pushd clr-build
 %make_install
 popd
+## install_append content
+rm %{buildroot}/usr/lib64/*cpp*
+rm %{buildroot}/usr/lib64/*glib*
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -361,8 +365,6 @@ popd
 %exclude /usr/lib64/haswell/libpoppler-glib.so
 %exclude /usr/lib64/haswell/libpoppler-qt5.so
 %exclude /usr/lib64/haswell/libpoppler.so
-%exclude /usr/lib64/libpoppler-cpp.so
-%exclude /usr/lib64/libpoppler-glib.so
 %exclude /usr/lib64/libpoppler-qt5.so
 %exclude /usr/lib64/libpoppler.so
 %exclude /usr/lib64/pkgconfig/poppler-cairo.pc
@@ -380,10 +382,6 @@ popd
 %exclude /usr/lib64/haswell/libpoppler-glib.so.8.11.0
 %exclude /usr/lib64/haswell/libpoppler-qt5.so.1
 %exclude /usr/lib64/haswell/libpoppler-qt5.so.1.17.0
-%exclude /usr/lib64/libpoppler-cpp.so.0
-%exclude /usr/lib64/libpoppler-cpp.so.0.5.0
-%exclude /usr/lib64/libpoppler-glib.so.8
-%exclude /usr/lib64/libpoppler-glib.so.8.11.0
 %exclude /usr/lib64/libpoppler-qt5.so.1
 %exclude /usr/lib64/libpoppler-qt5.so.1.17.0
 /usr/lib64/haswell/libpoppler.so.83

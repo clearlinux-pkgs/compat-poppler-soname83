@@ -1,0 +1,2 @@
+rm %{buildroot}/usr/lib64/*cpp*
+rm %{buildroot}/usr/lib64/*glib*
