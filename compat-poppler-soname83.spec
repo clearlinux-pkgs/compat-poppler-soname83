@@ -6,7 +6,7 @@
 #
 Name     : compat-poppler-soname83
 Version  : 0.72.0
-Release  : 7
+Release  : 8
 URL      : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz
 Source0  : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz
 Source99 : https://poppler.freedesktop.org/poppler-0.72.0.tar.xz.sig
@@ -65,7 +65,6 @@ Summary: bin components for the compat-poppler-soname83 package.
 Group: Binaries
 Requires: compat-poppler-soname83-data = %{version}-%{release}
 Requires: compat-poppler-soname83-license = %{version}-%{release}
-Requires: compat-poppler-soname83-man = %{version}-%{release}
 
 %description bin
 bin components for the compat-poppler-soname83 package.
@@ -86,6 +85,7 @@ Requires: compat-poppler-soname83-lib = %{version}-%{release}
 Requires: compat-poppler-soname83-bin = %{version}-%{release}
 Requires: compat-poppler-soname83-data = %{version}-%{release}
 Provides: compat-poppler-soname83-devel = %{version}-%{release}
+Requires: compat-poppler-soname83 = %{version}-%{release}
 
 %description dev
 dev components for the compat-poppler-soname83 package.
@@ -128,19 +128,19 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1547397188
+export SOURCE_DATE_EPOCH=1555317284
 mkdir -p clr-build
 pushd clr-build
-export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CFLAGS="$CFLAGS -O3 -falign-functions=32 -fcf-protection=full -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -O3 -falign-functions=32 -fcf-protection=full -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -O3 -falign-functions=32 -fcf-protection=full -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -O3 -falign-functions=32 -fcf-protection=full -fno-math-errno -fno-semantic-interposition -fno-trapping-math -fstack-protector-strong -mzero-caller-saved-regs=used "
 %cmake .. -DENABLE_XPDF_HEADERS=ON -DENABLE_UTILS=ON -DENABLE_LIBOPENJPEG=none
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1547397188
+export SOURCE_DATE_EPOCH=1555317284
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/compat-poppler-soname83
 cp COPYING %{buildroot}/usr/share/package-licenses/compat-poppler-soname83/COPYING
